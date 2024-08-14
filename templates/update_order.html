@@ -1,0 +1,19 @@
+<!-- update_order.html -->
+{% extends "base.html" %}
+{% block title %}Update Order{% endblock %}
+{% block content %}
+    <h1>Update Order #{{ order.id }}</h1>
+    <form method="POST">
+        <div>
+            <label for="status">Status:</label>
+            <select id="status" name="status">
+                <option value="pending" {% if order.status == 'pending' %}selected{% endif %}>Pending</option>
+                <option value="processing" {% if order.status == 'processing' %}selected{% endif %}>Processing</option>
+                <option value="shipped" {% if order.status == 'shipped' %}selected{% endif %}>Shipped</option>
+                <option value="delivered" {% if order.status == 'delivered' %}selected{% endif %}>Delivered</option>
+            </select>
+        </div>
+        <button type="submit">Update Order</button>
+    </form>
+    <a href="{{ url_for('orders') }}">Back to Orders</a>
+{% endblock %}
